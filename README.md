@@ -224,4 +224,27 @@ el actor que recivirá el mensaje podrá descifrarlo debido a que solo él o ell
 
 El cifrado debe ser **biyectivo**, implicando que sea **sobreyectivo** y **inyectivo** a la vez.
 
-### RSA(Lógica de generación de llaves) 
+## RSA(Lógica de generación de llaves)
+
+Las llaves son :
+ - Publica (pK) = (e,N).
+ - Privada (sK) = (d,p,q).
+
+Cifrado : **c = m<sup>e</sup> mod(N)**.
+
+Descifrado : **m' = (c)<sup>d</sup> mod(N)**
+
+
+### Construcción :
+
+1. Generar 2 primos largos **p** y **q** de al menos 1024 bits.
+
+2. Calcular **N = pq** Y  **phi(N) = ( p - 1)( q - 1)**.
+
+3. Buscar un **e** aleatorio tal que **1 < e < phi(N)** y **GCD(e, phi(N)) = 1**.
+
+4. Posteriormente se debe cumplir que **ed = 1 mod( phi(N))**
+
+### Caracteristicas:
+
+- La lógica RSA es maleable debido a que se puede ponderar por un c<sub>i</sub> y seguirá siendo valido, a no ser que se le aplique alguna otra técnica para evitar esto.
