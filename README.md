@@ -82,6 +82,8 @@ Ejemplos : Método chino, Escítala Lacedemonia.
 
 La mayoria de los algoritmos de cifrado modernos se utilizan mediante iteraciones alternando llaves y bloques.
 
+
+
 ### Modos de cifrado :
 
 - **ECB(Electronic code book)** :
@@ -97,7 +99,7 @@ La mayoria de los algoritmos de cifrado modernos se utilizan mediante iteracione
   ![HMAC](img/Cif-ECB.png )
 
   Descifrado ECB :
-  
+
   ![HMAC](img/Dec-ECB.png "Descifrado ECB")
 
 - **CBC(Cipher block chaining)** :
@@ -114,6 +116,22 @@ La mayoria de los algoritmos de cifrado modernos se utilizan mediante iteracione
   Descifrado CBC :  
 
   ![HMAC](img/Dec-CBC.png "Descifrado ECB")
+
+### Cifrado feistel
+
+Consta de rondas compuestas de la siguiente forma
+
+- **Cifrado** :
+
+  1. L<sub>i</sub> = R<sub>i-1</sub>
+  2. R<sub>i</sub> = L<sub>i-1</sub> xor f(R<sub>i-1</sub>, ki)
+
+- **Descifrado** :
+
+  1. R<sub>i-1</sub> = L<sub>i</sub>
+  2. L<sub>i-1</sub> = R<sub>i</sub> xor f(L<sub>i</sub>, K<sub>i</sub>)
+
+![Feistel](img/feistel.png "Cifrado y descifrado feistel")
 
 ## Esquemas de Padding(ECB y CBC)
 
