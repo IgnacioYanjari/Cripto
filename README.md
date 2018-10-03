@@ -176,4 +176,52 @@ Es una función de mapeo que logra llevar una cadena de bits de una **longitud a
 
   Con p<sub>1</sub>, p<sub>2</sub> como strings fijos utilizados para la operación de padding sobre k para completar el largo de un bloque completo.
 
-### MAC y a continuación cifrado
+### MAC en conjunto con cifrado
+
+Construcción de bloques :
+
+  * **Esquema de cifrado**  : k<sub>e</sub>, Enc<sub>k<sub>e</sub></sub>(m), Dec<sub>k<sub>e</sub></sub>(c)
+
+  * **Esquema MAC** : k<sub>a</sub>, MAC<sub>k<sub>a</sub></sub>, V<sub>k<sub>a</sub></sub>(m,t)
+
+1. **MAC y a continuación cifrado**
+
+| Cifrado | Descifrado |
+|---------|--------------|
+|Algoritmo Enc<sup>*</sup><sub>ke II ka</sub>(m)| Algoritmo Dec<sup>*</sup><sub>ke II ka</sub>(m)|
+| t <- MAC<sub>ka</sub>(c) |  m <- Dec<sub>ke</sub>(c) |
+| c <- Enc<sub>ke</sub>(m II t) | Parseamos m' como m II t|
+| Retorna c | Si V<sub>ka</sub>(m, t) = True entonces retorna **m**, de lo contrario retorna |
+
+2. **Cifrado y MAC**
+
+| Cifrado | Descifrado |
+|---------|--------------|
+|Algoritmo Enc<sup>*</sup><sub>ke II ka</sub>(m)| Algoritmo Dec<sup>*</sup><sub>ke II ka</sub>(m)|
+| c <- Enc<sub>ke</sub>(m) | Parseamos c como c' II t |
+| t <- MAC<sub>ka</sub>(m) | m' <- Dec<sub>ke</sub>(c')|
+| Retorna c II t | Si V<sub>ka</sub>(m, t) = True entonces retorna **m**, de lo contrario retorna |
+
+3. **Cifrado y  a continuación MAC**
+
+| Cifrado | Descifrado |
+|---------|--------------|
+|Algoritmo Enc<sup>*</sup><sub>ke II ka</sub>(m)| Algoritmo Dec<sup>*</sup><sub>ke II ka</sub>(m)|
+| c <- Enc<sub>ke</sub>(m) | Parseamos c como c' II t |
+| t <- MAC<sub>ka</sub>(c) | m' <- Dec<sub>ke</sub>(c')|
+| Retorna c II t | Si V<sub>ka</sub>(c', t) = True entonces retorna **m**, de lo contrario retorna |
+
+## Criptografía de clave asimétrica(pública).
+
+Cada actor tiene un par de llaves, que consisten en :
+
+  * Una llave pública, que se encuentra de forma abierta, y es usada para cifrar
+
+  * Una llave privada, que se mantiene en secreto, y es usada para descifrar
+
+Por lo tanto cualquiera que conosca a un actor tendrá una llave **publica para cifrar**, pero solo
+el actor que recivirá el mensaje podrá descifrarlo debido a que solo él o ella tiene la **llave privada para descifrar**
+
+El cifrado debe ser **biyectivo**, implicando que sea **sobreyectivo** y **inyectivo** a la vez.
+
+### RSA(Lógica de generación de llaves) 
