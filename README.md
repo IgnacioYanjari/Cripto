@@ -92,12 +92,20 @@ La mayoria de los algoritmos de cifrado modernos se utilizan mediante iteracione
     - Susceptible a replay de bloques (medidas para arreglarlo son los checksums).
     - No existen patrones.
 
+  ![HMAC](img/Cif-ECB.png "Cifrado ECB")
+
+  ![HMAC](img/Dec-ECB.png "Descifrado ECB")
+
 - **CBC(Cipher block chaining)** :
   A diferencia de ECB los bloques dependen del anterior, excepto el primer y ultimo bloque, al primer bloque se le agrega un vector de inicialización.
   * Caracteristicas :
     - Error de propagación.
     - Diferentes Vectores de inicializacion esconden patrones.
     - Necesita memoria interna para almacenar el estado anterior.
+
+    ![HMAC](img/Cif-CBC.png "Cifrado ECB")
+
+    ![HMAC](img/Dec-CBC.png "Descifrado ECB")
 
 ## Esquemas de Padding(ECB y CBC)
 
@@ -135,13 +143,13 @@ Es una función de mapeo que logra llevar una cadena de bits de una **longitud a
       2. Método 2 : Agregar un "1" seguido de puros 0.
       3. Método 3 : Igual al **Método 1**, pero al final se le agrega el largo de la palabra original.
 
-![CBC-MAC](img/CBC-MAC.png)
+![CBC-MAC](img/CBC-MAC.png "CBC-MAC")
 
   * **Basado en funciones hash**(HMAC) :
 
     La construcción de una función hash se lleva a cabo mediante una iteración de una función de compresión **f**, estas iteraciones tienen como nombre **Merkle-Damgård**
 
-![HMAC](img/HMAC.png)
+![HMAC](img/HMAC.png "HMAC")
 
   * **MAC customizadas** :
 
