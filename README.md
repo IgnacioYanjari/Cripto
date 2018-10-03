@@ -92,8 +92,11 @@ La mayoria de los algoritmos de cifrado modernos se utilizan mediante iteracione
     - Susceptible a replay de bloques (medidas para arreglarlo son los checksums).
     - No existen patrones.
 
-  ![HMAC](img/Cif-ECB.png "Cifrado ECB")
+  Cifrado ECB :
 
+  ![HMAC](img/Cif-ECB.png )
+
+  Descifrado ECB :
   ![HMAC](img/Dec-ECB.png "Descifrado ECB")
 
 - **CBC(Cipher block chaining)** :
@@ -103,9 +106,13 @@ La mayoria de los algoritmos de cifrado modernos se utilizan mediante iteracione
     - Diferentes Vectores de inicializacion esconden patrones.
     - Necesita memoria interna para almacenar el estado anterior.
 
-    ![HMAC](img/Cif-CBC.png "Cifrado ECB")
+  Cifrado CBC:
 
-    ![HMAC](img/Dec-CBC.png "Descifrado ECB")
+  ![HMAC](img/Cif-CBC.png "Cifrado ECB")
+
+  Descifrado CBC :  
+
+  ![HMAC](img/Dec-CBC.png "Descifrado ECB")
 
 ## Esquemas de Padding(ECB y CBC)
 
