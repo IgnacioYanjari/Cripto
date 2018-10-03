@@ -97,6 +97,7 @@ La mayoria de los algoritmos de cifrado modernos se utilizan mediante iteracione
   ![HMAC](img/Cif-ECB.png )
 
   Descifrado ECB :
+  
   ![HMAC](img/Dec-ECB.png "Descifrado ECB")
 
 - **CBC(Cipher block chaining)** :
