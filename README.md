@@ -135,12 +135,12 @@ Es una función de mapeo que logra llevar una cadena de bits de una **longitud a
       2. Método 2 : Agregar un "1" seguido de puros 0.
       3. Método 3 : Igual al **Método 1**, pero al final se le agrega el largo de la palabra original.
 
-![Alt text](https://github.com/IgnacioYanjari/Cripto/tree/master/img/CBC-MAC.png)
+![CBC-MAC](https://github.com/IgnacioYanjari/Cripto/tree/master/img/CBC-MAC.png)
 
   * **Basado en funciones hash**(HMAC) :
 
     La construcción de una función hash se lleva a cabo mediante una iteración de una función de compresión **f**, estas iteraciones tienen como nombre **Merkle-Damgård**
 
-![Alt text](https://github.com/IgnacioYanjari/Cripto/tree/master/img/CBC-MAC.png)
+![HMAC](https://github.com/IgnacioYanjari/Cripto/tree/master/img/HMAC.png)
 
   * **MAC customizadas** :
