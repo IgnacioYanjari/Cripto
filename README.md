@@ -135,12 +135,45 @@ Es una función de mapeo que logra llevar una cadena de bits de una **longitud a
       2. Método 2 : Agregar un "1" seguido de puros 0.
       3. Método 3 : Igual al **Método 1**, pero al final se le agrega el largo de la palabra original.
 
-![CBC-MAC](https://github.com/IgnacioYanjari/Cripto/tree/master/img/CBC-MAC.png)
+![CBC-MAC](img/CBC-MAC.png)
 
   * **Basado en funciones hash**(HMAC) :
 
     La construcción de una función hash se lleva a cabo mediante una iteración de una función de compresión **f**, estas iteraciones tienen como nombre **Merkle-Damgård**
 
-![HMAC](https://github.com/IgnacioYanjari/Cripto/tree/master/img/HMAC.png)
+![HMAC](img/HMAC.png)
 
   * **MAC customizadas** :
+
+## Mac V/S Hash
+
+- MAC : Ofrece tanto **integridad** como **autenticidad**
+
+- Hash : Solamente ofrece **integridad**, por lo tanto tiene que ser enviado sobre un canal autenticado.
+
+### Integridad con confidencialidad :
+
+ - **MAC** : Se necesitan **2 llaves distintas** k<sub>1</sub> y k<sub>2</sub>, una llave es para el cifrado y otra para MAC, por lo tanto se computa **c = E<sub>k1</sub>(m)** y luego **MAC<sub>k2</sub>(c)**
+
+ - **HASH** : Solo se necesita **una llave** para el cifrado, se computa **h(m)** y se envía **c = E<sub>k</sub>(m || h(m))**. Se podría pensar que no es seguro.
+
+### Construyendo Mac desde Hash
+
+1. Método de **Prefijo secreto** : **MAC<sub>k</sub>(m) = h(k || m)**.
+  * Es posible computar MAC(m || m') = h(k || m || m') sin conocer **k**.
+
+2. Método de **Sufijo secreto** :
+**MAC<sub>k</sub>(m) = h(m || k)**.
+  * Es posible realizar un **ataque fuera de línea** para encontrar colisiones en la función Hash
+
+3. Método de **Envoltura con Padding** :
+**MAC<sub>k</sub>(m) = h(k || p || m || k)**
+  * p es un string utilizado para la operación de padding sobre **k** para completar el  largo de un bloque.
+
+### HMAC
+  Por medio de utilización de
+  **HMAC<sub>k</sub>(m) = h( (k xor p<sub>1</sub>) || h((k xor p<sub>2</sub>)) || m )**
+
+  Con p<sub>1</sub>, p<sub>2</sub> como strings fijos utilizados para la operación de padding sobre k para completar el largo de un bloque completo.
+
+### MAC y a continuación cifrado
